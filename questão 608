@@ -1,0 +1,30 @@
+# Let D(m,n)=∑d|m∑k=1nσ0(kd) where d runs through all divisors of m and σ0(n) is the number of divisors of n.
+# You are given D(3!,102)=3398 and D(4!,106)=268882292.
+def divisores(n):
+  divs = []
+  for i in range(1,n+1):
+    if n % i == 0:
+      divs.append(i)
+  return divs
+  
+def num_divisores(n):
+  nu_divisores = 0
+  for i in range(1,n+1):
+    if n % i == 0:
+      nu_divisores += 1
+  return nu_divisores
+  
+  
+def D(m,n):
+  global soma
+  soma = 0
+  for d in divisores(m):
+    for k in range(1,n+1):
+      soma += num_divisores(d * k)
+    print ("#")
+  return soma
+  
+print(D(6, 10**2))
+print(soma)
+
+#print(D(24, 10**6))
